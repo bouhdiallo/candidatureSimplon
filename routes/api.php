@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -35,9 +36,11 @@ Route::group(['middleware' => 'admin:admin-api'], function () {
 
 
 
-
+//user controller
+Route::post('userregister', [UserController::class, 'userregister'])->name('userregister');
+Route::post('userlog', [UserController::class, 'userlog'])->name('userlog');
 
 Route::group(['middleware' => 'auth:user-api'], function () {
-    Route::post('adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout');
-    Route::post('me',[AdminController::class,  'me']);
+    Route::post('userlogout', [Usercontroller::class, 'userlogout'])->name('userlogout');
+    Route::post('me',[Usercontroller::class,  'me']);
 });
