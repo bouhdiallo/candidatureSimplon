@@ -38,6 +38,10 @@ class Admin extends Authenticatable implements JWTSubject
         'password',
     ];
 
+    public function formation(){
+        return ($this->hasMany(Formation::class,'formation_id'));
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
