@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class formation extends Model
 {
     use HasFactory;
+
+    public function admin(){
+        return ($this->belongsTo(Admin::class,'admin_id'));
+    }
 }
+
+

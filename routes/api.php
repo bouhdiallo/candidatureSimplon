@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\CandidatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,20 +23,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //crud formation par un administrateur
-Route::get('formation/create', [FormationController::class, 'store']);
-Route::put('formation/update/{formation}', [FormationController::class, 'update']);
-Route::delete('formation/{simplon}', [FormationController::class, 'delete']);
+Route::get('formation/create', [FormationController::class, 'store']);//ajout formation
+Route::put('formation/update/{formation}', [FormationController::class, 'update']);//modifier formation
+Route::delete('formation/{simplon}', [FormationController::class, 'delete']);//supprimmer formation
 
-
-
-
-
-
-
-
-
-
-
+//enregistrer candidature
+Route::get('candidature/create', [CandidatureController::class, 'store']); //ajout candidature
 
 
 

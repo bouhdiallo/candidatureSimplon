@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use \Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CreateFormationRequest extends FormRequest
+class CreateCandidatureRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@ class CreateFormationRequest extends FormRequest
     {
         return 
              [
-                     'name' => 'required'
+                     'statut' => 'required',
+                     'date_candidature' => 'required'
                 ];
 
             }
@@ -41,8 +42,9 @@ class CreateFormationRequest extends FormRequest
              public function messages()
              {
                 return [
-                    'name.required' => 'un name doit etre fourni'
+                    'statut.required' => 'un statut doit etre fourni',
+                    'date_candidature.required' => 'une date de candidature doit etre fourni'
+
                 ];
              }
-               
-            }
+    }
