@@ -14,7 +14,17 @@ class CandidatureController extends Controller
      */
     public function index()
     {
-        //
+        try{
+
+            return response()->json([
+              'status_code' =>200,
+              'status_message' => 'la liste des candidatures a été recupere',
+              'data'=>Candidature::all()
+          ]);
+
+        } catch(Exception $e){
+            return response($e)->json($e);
+        }
     }
 
     /**

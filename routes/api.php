@@ -29,6 +29,8 @@ Route::delete('formation/{simplon}', [FormationController::class, 'delete']);//s
 
 //enregistrer candidature
 Route::get('candidature/create', [CandidatureController::class, 'store']); //ajout candidature
+Route::get('candidature/liste', [CandidatureController::class, 'index']); //liste des candidateures
+
 
 
 
