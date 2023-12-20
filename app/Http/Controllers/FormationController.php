@@ -37,7 +37,7 @@ class FormationController extends Controller
             
              $simplon->name = $request->name;
             $simplon->date_debut = $request->date_debut;
-            $simplon->admin_id=1;
+            // $simplon->admin_id=1;
     
             $simplon->save();
     

@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Candidature;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCandidatureRequest;
+use App\Http\Requests\RefuserCandidatureRequest;
 
 class CandidatureController extends Controller
 {
@@ -26,13 +27,65 @@ class CandidatureController extends Controller
             return response($e)->json($e);
         }
     }
+  
+    // fonction pour liste des candidatures accepter
+
+     public function candidatureAccepter()
+     {;
+
+         try{
+
+             return response()->json([
+               'status_code' =>200,
+               'status_message' => 'la liste des candidatures accepter',
+              'data'=>Candidature::where('statut', 'accepter')->get(),
+          ]);
+
+        } catch(Exception $e){
+         return response($e)->json($e);
+        }
+    }
+
+// traitement pour liste des candidats refuser
+     public function candidatureRefuser()
+    {
+         try{
+
+           return response()->json([
+           'status_code' =>200,
+           'status_message' => 'la liste des candidatures refuser',
+           'data'=>Candidature::where('statut', 'refuser')->get(),
+        ]);
+
+       } catch(Exception $e){
+           return response($e)->json($e);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function statut(RefuserCandidatureRequest $request, $id)
     {
-        //
+    
+        try {
+            $candidature = Candidature::find($id);
+            $candidature->statut = 'refuser';
+            // $candidature->users_id=1;
+
+            // $candidature->update();
+            $candidature->save();
+   
+            return response()->json([
+                'status_code' =>200,
+                'status_message' => 'la candidature a été refusé',
+                'data'=>$candidature
+            ]);
+    
+           } catch (Exception $e) {
+             
+             return response()->json($e);
+           }
     }
 
     /**

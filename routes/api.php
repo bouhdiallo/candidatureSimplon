@@ -29,9 +29,13 @@ Route::delete('formation/{simplon}', [FormationController::class, 'delete']);//s
 
 //enregistrer candidature
 Route::get('candidature/create', [CandidatureController::class, 'store']); //ajout candidature
-Route::get('candidature/liste', [CandidatureController::class, 'index']); //liste des candidateures
+Route::get('candidature/liste', [CandidatureController::class, 'index']); //liste de tous les candidatures
+
+Route::post('candidature/statut/{candidature}', [CandidatureController::class, 'statut']); //accepter ou refuser une candidature
 
 
+ Route::get('candidature/liste/accepter', [CandidatureController::class, 'candidatureAccepter']); //liste des candidatures accepter
+ Route::get('candidature/liste/refuser', [CandidatureController::class, 'candidatureRefuser']); //liste des candidatures refuser
 
 
 // admin controller
@@ -45,7 +49,7 @@ Route::group(['middleware' => 'admin:admin-api'], function () {
     Route::post('adminlogout', [AdminController::class, 'adminlogout'])->name('adminlogout');
     Route::post('me',[AdminController::class,  'me']);
 });
-
+    
 
 //user controller
 Route::post('userregister', [UserController::class, 'userregister'])->name('userregister');

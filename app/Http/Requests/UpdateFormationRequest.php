@@ -42,7 +42,7 @@ class UpdateFormationRequest extends FormRequest
              public function messages()
              {
                 return [
-                    'nname.required' => 'un name doit etre fourni'
+                    'name.required' => 'un name doit etre fourni'
                 ];
              }      
 

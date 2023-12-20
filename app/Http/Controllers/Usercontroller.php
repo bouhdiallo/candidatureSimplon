@@ -38,6 +38,9 @@ class Usercontroller extends Controller
     
             return $token;
             }
+
+
+            
             public function me()
             {
                 return response()->json(auth()->guard('user-api')->user());
